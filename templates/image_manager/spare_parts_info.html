@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Запчасти для принтера
+{% endblock %}
+
+{% block page_name %}
+Запчасти для принтера
+{% endblock %}
+
+{% block content %}
+        {% if page %}
+            {% for spare_part in page %}
+                <div class="alert alert-warning mt-2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-10">
+                                <h3>Артикул - {{ spare_part.item_number }}</h3>
+                                <p3>Описание - {{ spare_part.name }}</p3><br>
+                                <p3>Минимальный запас - {{ spare_part.min_value }} шт.</p3><br>
+                            </div>
+                            <div class="col-2">
+                                <a href="{% url 'spare_parts_update' spare_part.id %}"><ion-icon name="create-outline" size="large"></ion-icon></a>
+                                <a href="{% url 'spare_parts_delete' spare_part.id %}"><ion-icon name="trash-outline" size="large"></ion-icon></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if page.has_previous %}
+                <a href="?page={{ page.previous_page_number }}">Назад</a>
+            {% endif %}
+            {% if page.has_next %}
+                <a href="?page={{ page.next_page_number }}">Вперед</a>
+            {% endif %}
+        {% else %}
+            <p1>Запчасти для принтера не добавлены, выполните распознавание объекта</p1>
+        {% endif %}
+{% endblock %}

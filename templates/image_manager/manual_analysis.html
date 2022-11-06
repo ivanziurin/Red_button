@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Анализ изображения
+{% endblock %}
+
+{% block page_name %}
+Анализ изображения
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <p3>Нажмите автозахват для автоматического фото с камеры на складе, либо загрузите изображение вручную и нажмите отправить.</p3><br><br>
+        <a href="{% url 'img_catch' %}" class="btn btn-danger btn-lg btn-block" role="button" aria-pressed="true">Автозахват</a>
+    </div>
+    ________________________________________________________________________
+    <div class="col-sm-9">
+        <div id="uploadedImage"></div>
+            <div class="mt-4">
+                <form action="" enctype="multipart/form-data" id="imageUploadForm" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button class="btn btn-outline-success" type="submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-4">
+            {% if objects.result_img %}
+                <p1>В запасе на складе:</p1><br>
+                    <p2 px="2">
+                        {% for spare_part in objects.SpareParts.all %}
+                            <b>{{ spare_part.SparePart.item_number }}</b> -
+                            {{ spare_part.quantity }}
+                            шт.<br>
+                        {% endfor %}
+                    </p2>
+                <img src="{{ objects.result_img.url }}" class="img-fluid" />
+
+            {% else %}
+                Загрузите необработанное изображение склада с камеры в формате jpg.
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

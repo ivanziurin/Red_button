@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Удалить запись
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-4">
+    <h3 class="mt-5">Удалить запись из БД?</h3>
+    <div class="row">
+    <div class="col-6" align="center">
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
+    </div>
+    <div class="col-6">
+    <button type="submit" class="btn btn-secondary">
+        <a class="nav-link" href="{% url 'parts_info' %}">Отмена</a>
+    </button>
+    </div>
+    </div>
+    </div>
+{% endblock %}

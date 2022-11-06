@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <!--Chart js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+</head>
+<body class="d-flex flex-column h-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="d-flex flex-column flex-shrink-1 p-3 text-bg-dark" style="width: 200px;">
+
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="Red" class="bi bi-record-btn" viewBox="0 0 16 16">
+                <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+            </svg>
+            <span class="fs-4">Red_button</span>
+          </a>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="{% url 'home' %}" class="nav-link active" aria-current="page">
+                <svg class="bi pe-none me-2" width="16" height="16"></svg>
+                Home
+              </a>
+            </li>
+              <a href="{% url 'upload_image_url' %}" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16"></svg>
+                Manual
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'my-chart' %}" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16"></svg>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'parts_info' %}" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16"></use></svg>
+                Parts info
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                About
+              </a>
+            </li>
+          </ul>
+          <hr>
+    </div>
+
+      <main class="col-md-8 ms-sm-auto col-lg-10 px-md-5"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">{% block page_name %}{% endblock page_name %}</h1>
+        </div>
+
+          {% block content %}{% endblock content %}
+          {% block scripts %}{% endblock scripts %}
+      </main>
+    </div>
+
+</div>
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="text-muted">© 2022 "YOUR_COMPANY"</span>
+    </div>
+  </footer>
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

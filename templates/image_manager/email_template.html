@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>Добрый день. На складе принтера заканчиваются запчасти.</h2><br>
+        <p2>Прошу заказать компоненты ниже:</p2><br>
+        {% for key, value in ending_components.items %}
+            <p3><b>{{ key }}</b></p3>, текущий запас -
+            {{ value }} шт.<br>
+        {% endfor %}
+    </body>
+</html>

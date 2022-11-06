@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Складской запас
+{% endblock %}
+
+{% block page_name %}
+Складской запас
+{% endblock %}
+
+{% block content %}
+        <div class="mt-4">
+            {% if objects.result_img %}
+                <p1>В запасе на складе на {{ objects.datetime }}:</p1><br>
+                    <p2 px="2">
+                        {% for spare_part in objects.SpareParts.all %}
+                            <b>{{ spare_part.SparePart.item_number }}</b> -
+                            {{ spare_part.quantity }}
+                            шт.<br>
+                        {% endfor %}
+                    </p2>
+                <img src="{{ objects.result_img.url }}" class="img-fluid" />
+
+            {% else %}
+                В базе пока нет изображений.
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

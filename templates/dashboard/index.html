@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Анализ запасов
+{% endblock %}
+
+{% block page_name %}
+Анализ запасов
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                    <canvas id="current-stock-chart"></canvas>
+            </div>
+            <div class="col-6">
+                    <canvas id="data-analysis-chart"></canvas>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{%block scripts%}
+  <script>
+
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
+          ],
+          label: 'Текущий запас'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+
+    var config2 = {
+    type: 'bar',
+    data: {
+      datasets: [{
+        data: {{ data|safe }},
+        backgroundColor: [
+          '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
+        ],
+        label: 'Текущий запас'
+      }],
+      labels: {{ labels|safe }}
+    },
+    options: {
+      responsive: true
+    }
+  };
+
+  window.onload = function() {
+    var ctx = document.getElementById('current-stock-chart').getContext('2d');
+    window.myPie = new Chart(ctx, config);
+    var ctx2 = document.getElementById('data-analysis-chart').getContext('2d');
+    window.myPie = new Chart(ctx2, config2);
+  };
+
+  </script>
+{%endblock scripts%}
