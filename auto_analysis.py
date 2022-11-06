@@ -121,8 +121,8 @@ def CronAnalysis():
             }
         )
         msg = EmailMultiAlternatives(subject, html_message,
-                                     'ivanter13@gmail.com',
-                                     ['ivanter13@gmail.com', 'ivan.zyurin@claas.com'])
+                                     '',
+                                     ['', ''])
         msg.mixed_subtype = 'related'
         msg.attach_alternative(html_message, "text/html")
         img_dir_raw = 'media/images'
