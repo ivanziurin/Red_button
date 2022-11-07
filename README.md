@@ -8,3 +8,5 @@
 6. Python manage.py makemigrations
 7. Python manage.py migrate
 8. Python manage.py runserver
+
+*Tested on Ubuntu 22.04; Windows 10
